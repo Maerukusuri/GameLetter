@@ -6,7 +6,6 @@
    <style>
        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
        body { margin: 0; padding: 0; background-color: #f3f2f1; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
-
        /* ЭФФЕКТ КОФЕ-ПАУЗЫ И БЛЁСТОК */
        .coffee-overlay {
            position: fixed;
@@ -44,7 +43,6 @@
            0% { transform: translateY(0) rotate(-10deg); }
            100% { transform: translateY(-20px) rotate(10deg); }
        }
-
        /* Контейнер для блёсток */
        .sparkle {
            position: fixed;
@@ -52,14 +50,13 @@
            height: 10px;
            border-radius: 50%;
            pointer-events: none;
-           z-index: 999999;
+           z-index: 99999;
            animation: flySparkle 1.2s ease-out forwards;
        }
        @keyframes flySparkle {
            0% { transform: translate(0, 0) scale(1); opacity: 1; }
            100% { transform: translate(var(--x), var(--y)) scale(0); opacity: 0; }
        }
-
        header { background-color: #0078d4; color: white; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
        header h1 { margin: 0; font-size: 16px; font-weight: 600; }
        .stats-container { display: flex; gap: 20px; }
@@ -67,11 +64,9 @@
        .stat-box.warning { background: #d83b01; }
        .stat-box.danger { background: #a80000; animation: blink 0.8s infinite; }
        @keyframes blink { 50% { opacity: 0.5; } }
-
        .main-container { display: flex; flex: 1; overflow: hidden; position: relative; }
        .nav-bar { width: 48px; background-color: #111; display: flex; flex-direction: column; align-items: center; padding-top: 10px; gap: 20px; }
        .nav-icon { width: 24px; height: 24px; background: #333; border-radius: 4px; color: #aaa; text-align: center; line-height: 24px; font-size: 12px; }
-
        /* Список писем */
        .email-list { width: 380px; background-color: white; border-right: 1px solid #edebe9; overflow-y: auto; }
        .list-header { padding: 15px; font-size: 12px; font-weight: bold; color: #605e5c; border-bottom: 1px solid #edebe9; background: #faf9f8; }
@@ -80,18 +75,15 @@
        .sender { font-weight: 600; font-size: 14px; color: #323130; }
        .subject { font-size: 13px; color: #0078d4; margin: 2px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
        .preview { font-size: 12px; color: #605e5c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
        /* Чтение письма */
        .email-view { flex: 1; background-color: white; display: flex; flex-direction: column; padding: 30px; overflow-y: auto; }
        .email-header { border-bottom: 1px solid #edebe9; padding-bottom: 15px; margin-bottom: 20px; }
        .email-view-subject { font-size: 20px; color: #323130; margin: 0 0 8px 0; }
        .email-view-stage { font-size: 11px; display: inline-block; padding: 3px 8px; border-radius: 10px; font-weight: bold; margin-top: 5px; }
-
        .stage-high { background: #dff6dd; color: #107c41; }
        .stage-medium { background: #fff4ce; color: #794500; }
        .stage-low { background: #fde7e9; color: #a80000; }
        .email-body { font-size: 14px; line-height: 1.6; color: #323130; background: #faf9f8; padding: 20px; border-radius: 4px; margin-bottom: 20px; white-space: pre-line; border-left: 4px solid #e1dfdd; }
-
        /* Кнопки ответов */
        .reply-box { background-color: #f3f2f1; padding: 20px; border-radius: 6px; border: 1px solid #edebe9; }
        .reply-title { font-size: 12px; font-weight: bold; color: #605e5c; margin-bottom: 12px; }
@@ -101,13 +93,11 @@
        .btn-option.toxic:hover { background: #fff0f0; border-color: #ff0000; color: #a80000; }
        .btn-option.hidden-toxic { border-color: #ffe6cc; }
        .btn-option.hidden-toxic:hover { background: #fff5eb; border-color: #ff9900; }
-
        /* Облачко последствий */
        .bubble-notification { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 450px; background: white; border: 3px solid #0078d4; border-radius: 16px; padding: 25px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); z-index: 10000; text-align: center; }
        .bubble-emoji { font-size: 45px; margin-bottom: 10px; }
        .bubble-text { font-size: 15px; color: #323130; line-height: 1.5; margin-bottom: 20px; }
        .btn-bubble-close { background: #0078d4; color: white; border: none; padding: 10px 24px; font-size: 13px; border-radius: 4px; cursor: pointer; font-weight: bold; }
-
        /* ТИМС ЧАТ */
        .chat-popup { display: none; position: absolute; bottom: 20px; right: 20px; width: 450px; background: white; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); border: 2px solid #6264a7; z-index: 50; }
        .chat-header { background: #6264a7; color: white; padding: 12px 15px; font-size: 14px; font-weight: bold; display: flex; justify-content: space-between; }
@@ -115,7 +105,6 @@
        .chat-footer { padding: 12px; background: white; border-top: 1px solid #edebe9; }
        .btn-chat { background: #4a2c11; color: white; border: none; padding: 12px 16px; font-size: 13px; border-radius: 4px; cursor: pointer; width: 100%; font-weight: bold; text-align: center; transition: 0.2s; }
        .btn-chat:hover { background: #36200c; }
-
        /* Финал */
        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); justify-content: center; align-items: center; z-index: 30000; }
        .modal-content { background: white; padding: 40px; border-radius: 8px; text-align: center; max-width: 550px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
@@ -123,12 +112,10 @@
    </style>
 </head>
 <body>
-
 <div id="coffee-overlay" class="coffee-overlay">
    <div class="coffee-cup-animation">☕</div>
    <div class="coffee-text">Сплетничаем и пьем кофе в учительской...</div>
 </div>
-
    <header>
        <h1>InLook</h1>
        <div class="stats-container">
@@ -143,7 +130,6 @@
            <div id="list-items-container"></div>
        </div>
        <div class="email-view" id="email-view-section"></div>
-
        <div class="chat-popup" id="gossip-chat">
            <div class="chat-header" id="chat-sender">💬 Чат: Танюха (Английский)</div>
            <div class="chat-body" id="chat-text">Ты не поверишь, что сейчас произошло...</div>
@@ -152,13 +138,11 @@
            </div>
        </div>
    </div>
-
    <div class="bubble-notification" id="bubble-notif">
        <div class="bubble-emoji" id="bubble-emoji">💬</div>
        <div class="bubble-text" id="bubble-text">Текст последствия...</div>
        <button class="btn-bubble-close" onclick="closeBubble()">Ок, едем дальше</button>
    </div>
-
    <div class="modal" id="end-modal">
        <div class="modal-content">
            <h2 id="modal-title"></h2>
@@ -166,7 +150,6 @@
            <button class="btn-restart" onclick="location.reload()">Перезагрузить систему</button>
        </div>
    </div>
-
 <script>
  // Базовые пулы писем
  const poolHighZen = [
@@ -346,7 +329,6 @@
          ]
      }
  ];
-
 const poolMediumZen = [
      {
          sender: "IT-Отдел школы",
@@ -376,7 +358,7 @@ const poolMediumZen = [
          subject: "Оформление коридора к неделе Синергии",
          body: "Вашему классу поручено обклеить весь левый коридор вырезками из газет про успехи молодых педагогов. Срок — завтра к 7:45 утра.",
          options: [
-             { text: "Остаться после уроков и резать газеты вместе с дежурными детьми.", zenChange: -6, msg: "Вы надышались клеем и ушли домой в восемь вечера. Дзен катится вниз." },
+             { text: "Остаться после уроков и резать газеты вместе with дежурными детьми.", zenChange: -6, msg: "Вы надышались клеем и ушли домой в восемь вечера. Дзен катится вниз." },
              { text: "У меня как раз освободилось три буквы свободного времени, могу направить их на ваше задание.", isHiddenNahui: true },
              { text: "Поручить это задание родительскому комитету под предлогом сплочения семьи.", zenChange: 3, msg: "Родители за вечер всё сделали сами. Вы — гений менеджмента! Дзен +3%." },
              { text: "Знаете что? Клейте сами свои газеты. Пошли вы нахуй.", isNahui: true }
@@ -562,6 +544,7 @@ const poolMediumZen = [
              { text: "Сказать, что ваша натальная карта запрещает вам общаться с дураками. И послать его нахуй.", isNahui: true }
          ]
      }
+ ]; // СКОБКИ ТУТ БЫЛИ ПОТЕРЯНЫ, ТЕПЕРЬ ВСЁ ЗАКРЫТО!
 
  const carpetEmail = {
      sender: "Секретариат Директора",
@@ -583,7 +566,6 @@ const poolMediumZen = [
          { text: "Сказать: «Мои уроки — это искусство, а ваши планы — макулатура!» и послать её нахуй.", isNahui: true }
      ]
 };
-
 const carpetSysadminEmail = {
      sender: "Системный администратор (IT-отдел)",
      subject: "Объяснительная по поводу падения школьного сервера",
@@ -594,7 +576,6 @@ const carpetSysadminEmail = {
          { text: "Сказать сисадмину, чтобы он обновил свои древние сервера, а директора послать нахуй.", isNahui: true }
      ]
 };
-
  const gossipPool = [
      { sender: "💬 Чат: Танюха (Английский)", text: "Короче, завуч застукала физручку в тренерской с сыном председателя попечительского совета! Было громко, физручка пригрозила слить скрины, где завуч сама себе часы приписывала! \n\n*Жду в лаборантской, кофе налит!*" },
      { sender: "💬 Чат: Олька (География)", text: "Историк забыл выключить трансляцию в Teams, ушел в туалет с петличкой и минут десять материл директора в прямом эфире министерства! \n\n*Беги скорее на кафедру, я сделала нам капучино!*" },
@@ -607,7 +588,6 @@ const carpetSysadminEmail = {
      { sender: "💬 Чат: Олька (География)", text: "Вахтерша тетя Нина нашла в мужском туалете чей-то потерянный вейп и теперь ходит по коридорам, пускает кольца дыма с ароматом клубники и отказывается отдавать без предъявления паспорта! \n\n*Заварила чай на травах, заходи послушать подробности!*" },
      { sender: "💬 Чат: Мариванна (Математика)", text: "Директор решил внедрить ИИ и загрузил устав школы в нейросеть. В итоге бот выдал расписание, по которому у 11-го класса 5 раз в неделю кружок «Квантового выгорания», а у директора — нулевая ставка. \n\n*Кофе уже стынет, иди сюда!*" }
  ];
-
  // Глобальное состояние игры
  let sanity = 100;
  let totalProcessed = 0;
@@ -617,7 +597,8 @@ const carpetSysadminEmail = {
  let liedAboutSickness = false;
  let usedEmails = { high: [], medium: [], low: [] };
  let usedGossips = [];
-   const winEmail = {
+
+ const winEmail = {
     sender: "Министерство Образования (Просветление)",
     subject: "Приказ №404: О досрочном завершении учебного года и эвакуации на пляж",
     body: "В связи с критическим превышением уровня школьной синергии в атмосфере и перегревом серверов с отчетами, министерство объявляет немедленный конец рабочего дня. Всем педагогам предписано закрыть ноутбуки, заблокировать родительские чаты и принудительно отправиться пить холодный квас на пляж. Переработки аннулированы.",
@@ -631,7 +612,6 @@ const carpetSysadminEmail = {
 };
 
  function initGame() {
-    
      // Сброс состояния при перезапуске
      sanity = 100;
      totalProcessed = 0;
@@ -640,14 +620,12 @@ const carpetSysadminEmail = {
      liedAboutSickness = false;
      usedEmails = { high: [], medium: [], low: [] };
      usedGossips = [];
-
      // Генерация первого письма
      const randomIndex = Math.floor(Math.random() * poolHighZen.length);
      currentEmail = JSON.parse(JSON.stringify(poolHighZen[randomIndex]));
      usedEmails.high.push(currentEmail.subject);
      currentEmail.id = totalProcessed;
      history.unshift(currentEmail);
-
      updateUI();
      renderEmailView();
  }
@@ -657,16 +635,16 @@ function generateEmail() {
          endGame("🚨 ПОЛНОЕ ВЫГОРАНИЕ", "Ваш дзен равен нулю. Вы забились под парту в 304 кабинете, обняли кактус и отказываетесь выходить.");
          return;
      }
-
+     
      // --- ВСТАВКА ДЛЯ ПОБЕДЫ (ПАСХАЛКА МИНИСТЕРСТВА) ---
-     // Если обработано больше 22 писем и сработал шанс 15% — выдаем победу!
-     if (totalProcessed > 40 && Math.random() < 0.15) {
+     // Вернул проверку на 22 обработанных письма
+     if (totalProcessed > 22 && Math.random() < 0.15) {
          currentEmail = JSON.parse(JSON.stringify(winEmail));
          currentEmail.id = totalProcessed;
          history.unshift(currentEmail);
          updateUI();
          renderEmailView();
-         return; // Прерываем функцию, чтобы обычное письмо не генерировалось
+         return; 
      }
 
      let activePool = poolHighZen;
@@ -678,7 +656,6 @@ function generateEmail() {
          activePool = poolMediumZen;
          poolKey = 'medium';
      }
-
      if (liedAboutSickness) {
          currentEmail = JSON.parse(JSON.stringify(carpetEmail));
          liedAboutSickness = false;
@@ -694,11 +671,9 @@ function generateEmail() {
          usedEmails[poolKey].push(selectedEmail.subject);
          currentEmail = JSON.parse(JSON.stringify(selectedEmail));
      }
-
      currentEmail.id = totalProcessed;
      history.unshift(currentEmail);
      stepsSinceLastGossip++;
-
      // Редкие сплетни: раз в 7 шагов с шансом 20%
      if (stepsSinceLastGossip >= 7 && Math.random() < 0.20) {
          triggerGossip();
@@ -713,7 +688,6 @@ function generateEmail() {
      document.getElementById('sanity').innerText = sanity;
      document.getElementById('email-count').innerText = totalProcessed;
      const box = document.getElementById('zen-box');
-
      if (sanity <= 30) {
          box.className = "stat-box danger";
      } else if (sanity <= 70) {
@@ -721,7 +695,6 @@ function generateEmail() {
      } else {
          box.className = "stat-box";
      }
-
      const container = document.getElementById('list-items-container');
      container.innerHTML = '';
      history.forEach((email, idx) => {
@@ -740,20 +713,17 @@ function generateEmail() {
      const viewSection = document.getElementById('email-view-section');
      let optionsHtml = '';
      let stageBadge = '<span class="email-view-stage stage-high">Стадия: Ровный Дзен (> 70%)</span>';
-
      if (sanity <= 30) {
          stageBadge = '<span class="email-view-stage stage-low">Стадия: ПОЛНЫЙ СЮРРЕАЛИЗМ (≤ 30%)</span>';
      } else if (sanity <= 70) {
          stageBadge = '<span class="email-view-stage stage-medium">Стадия: Пассивная агрессия (31-70%)</span>';
      }
-
      currentEmail.options.forEach((opt, idx) => {
          let typeClass = '';
          if (opt.isNahui) typeClass = 'toxic';
          if (opt.isHiddenNahui) typeClass = 'hidden-toxic';
          optionsHtml += `<button class="btn-option ${typeClass}" onclick="selectOption(${idx})">${opt.text}</button>`;
      });
-
      viewSection.innerHTML = `
          <div class="view-content">
              <div class="email-header">
@@ -772,6 +742,13 @@ function generateEmail() {
 
  window.selectOption = function(idx) {
      const option = currentEmail.options[idx];
+     
+     // --- ОБРАБОТКА ПОБЕДНОЙ КНОПКИ ---
+     if (option.isWin) {
+         alert(option.msg);
+         location.reload(); 
+         return;
+     }
 
      if (option.isNahui) {
          if (currentEmail.sender === "Администрация" || currentEmail.sender === "Секретариат Директора" || currentEmail.sender === "Завуч (Высшая Ступень Бреда)") {
@@ -784,7 +761,6 @@ function generateEmail() {
              return;
          }
      }
-
      if (option.isHiddenNahui) {
          sanity -= 12;
          if (Math.random() > 0.5 && (currentEmail.sender === "IT-Отдел школы" || currentEmail.sender === "Завуч по воспитательной работе")) {
@@ -796,14 +772,12 @@ function generateEmail() {
          nextStep();
          return;
      }
-
      if (option.isSick) {
          sanity += 2;
          liedAboutSickness = true;
      } else {
          sanity += option.zenChange;
      }
-
      if (sanity > 100) sanity = 100;
      showBubble("💬", option.msg || "Вы отправили ответ.");
      nextStep();
@@ -826,17 +800,14 @@ function generateEmail() {
 
  function triggerGossip() {
      const chat = document.getElementById('gossip-chat');
-
      // Фильтруем сплетни, которые еще не читали
      let availableGossips = gossipPool.filter(g => !usedGossips.includes(g.text));
      if (availableGossips.length === 0) {
          usedGossips = [];
          availableGossips = gossipPool;
      }
-
      const randomGossip = availableGossips[Math.floor(Math.random() * availableGossips.length)];
      usedGossips.push(randomGossip.text);
-
      document.getElementById('chat-sender').innerText = randomGossip.sender;
      document.getElementById('chat-text').innerText = randomGossip.text;
      chat.style.display = 'block';
@@ -846,7 +817,6 @@ function generateEmail() {
      document.getElementById('gossip-chat').style.display = 'none';
      const overlay = document.getElementById('coffee-overlay');
      overlay.classList.add('active');
-
      setTimeout(() => {
          overlay.classList.remove('active');
          sanity += 5;
@@ -883,3 +853,5 @@ function generateEmail() {
  // Стартуем
  initGame();
 </script>
+</body>
+</html>
